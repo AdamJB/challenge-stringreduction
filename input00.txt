@@ -1,0 +1,10 @@
+6
+aaaacccccccbbbbbbbbb
+cab
+bcab
+ccccc
+aabb
+aaaabbbb
+
+
+
