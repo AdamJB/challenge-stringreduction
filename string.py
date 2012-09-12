@@ -1,13 +1,18 @@
 #!/usr/bin/env python
 
 def getData():
+  """
+  Helper method to just read the data from command line.
+  """
+  # First line is the number of strings to reduce
   numInput = int(raw_input().strip())
 
-  llStrings = []
+  # get the number of strings
+  stringList = []
   for i in range(numInput):
-    llStrings += [raw_input().strip()]
+    stringList += [raw_input().strip()]
 
-  return llStrings
+  return stringList
 
 def reduceString(string):
   # Create 3 stacks containing each character
@@ -17,6 +22,7 @@ def reduceString(string):
   bStack = []
   cStack = []
 
+  # Creating the stack
   for s in string:
     if s == "a":
       aStack += 'a'
@@ -26,7 +32,7 @@ def reduceString(string):
       cStack += 'c'
 
   while 1:
-    # this ends when 1 of the stacks remain
+    # this ends when only 1 stack remains
     if not aStack and not bStack:
       return len(cStack)
     if not aStack and not cStack:
@@ -34,6 +40,7 @@ def reduceString(string):
     if not bStack and not cStack:
       return len(aStack)
 
+    # Check if A is the smallest stack
     if len(aStack) <= len(bStack) and len(bStack) <= len(cStack) or \
      len(aStack) <= len(cStack) and len(cStack) <= len(bStack):
       cStack.pop(0)
@@ -50,16 +57,12 @@ def reduceString(string):
       aStack.pop(0)
       cStack += 'c'
 
-strings = getData()
 
-for s in strings:
-  print reduceString(s)
+if __name__ == "__main__":
+  # Read the string data
+  strings = getData()
 
-"""
+  # Reduce each string, and output the # of remaining strings
+  for s in strings:
+    print reduceString(s)
 
-aaaacccccccbbbbbbbbb
-aaaacccccccbbbbbbbbb
-
-
-
-"""
